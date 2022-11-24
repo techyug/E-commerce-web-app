@@ -1,0 +1,168 @@
+show databases;
+use iOrderapp;
+
+
+create table categories(
+category_name varchar(50),
+category_id int(4) primary key auto_increment
+);
+insert into categories(category_name) values('Fruits');
+select * from categories;
+
+/* add products*/
+create table products(
+product_id int(10) auto_increment primary key,
+product_name varchar(100),
+product_price decimal(10,2),
+product_img_url varchar(200),
+product_category_id int(4),
+inlcusion_time timestamp not null default current_timestamp,
+foreign key (product_category_id) references categories(category_id)
+);
+
+
+insert into products(product_name,product_price,product_img_url,product_category_id) 
+values('Mango','100','https://www.bigbasket.com/pd/30001003/fresho-dasheri-mango-1-kg/','1');
+
+select * from products;
+select categories.category_name from products natural join categories where product_id='1';
+
+/* user registers with folowing details */
+create table users(
+user_id int(10) primary key auto_increment,
+user_name varchar(50),
+user_phone varchar(12),
+user_email varchar(100),
+user_reg_date timestamp not null default current_timestamp
+);
+/*user have to set password to continue*/
+
+create table user_passwords(
+user_id int(10) ,
+foreign key(user_id) references users(user_id),
+user_password varchar(50)
+);
+
+/* user registers with folowing details */
+insert into users(user_name,user_phone,user_email) values ('Yogendra Singh','7080784497','yogendra.techyug@gmail.com');
+
+select* from users;
+
+/* user sets passward */
+insert into user_passwords(user_id,user_password) values ((select user_id from users where user_phone='7080784497'),'12345');
+
+/* fetch password by providing user phone */
+
+select user_password from users natural join user_passwords where user_phone='7080784497';
+
+/* user adds item in his cart */
+
+create table cart(
+user_id int(10),
+product_id int(10),
+foreign key(user_id) references users(user_id),
+foreign key(product_id) references products(product_id),
+added_time timestamp not null default current_timestamp
+);
+
+
+/*user clicks add to cart*/
+insert into cart(user_id,product_id) values('1','1');
+
+/*user want to show his cart with product name and price */
+
+select product_name,product_price from users natural join cart natural join products where user_id='1';
+
+/* orders table schema  */
+create table orderstatuse(
+order_id int(10),
+order_statuse varchar(100),
+updated_at timestamp not null default current_timestamp,
+foreign key(order_id) references orders(order_id)
+);
+
+create table addresses(
+address_id int(10) auto_increment primary key,
+user_id int(10) not null,
+user_pincode int(7),
+user_city varchar(30),
+user_town_village varchar(30),
+user_state varchar(30),
+foreign key(user_id) references users(user_id)
+);
+insert into addresses(user_id,user_pincode,user_city,user_town_village,user_state)
+				values('1','221008','Varanasi','Sujabad','Uttar Pradesh');
+select * from addresses;
+                
+
+create table orders(
+order_id int(12) auto_increment primary key,
+user_id int(10),
+product_id int(10),
+foreign key(user_id)  references users(user_id),
+foreign key(product_id) references products(product_id)
+ );
+ alter table orders add address_id int(10);
+ 
+
+ 
+  alter table orders add foreign key(address_id) references addresses(address_id);
+ 
+ insert into orders(user_id,product_id,address_id) values ('1','1','1');
+ /* now user have to get his order_id to get its statuse*/
+ select * from orders where user_id="1";
+ delete from orders where order_id="1";
+ 
+ insert into orderstatuse(order_id,order_statuse) values('1','New Order');
+  insert into orderstatuse(order_id,order_statuse) values('1','order delivered');
+   insert into orderstatuse(order_id,order_statuse) values('2','delivered');
+  
+  /* user wants to know statuse of his orders by providing order_id*/
+  select *  from orders natural join addresses where user_id ="1";
+ /* user wants to know what is the product ordered by him*/
+ select * from orders natural join users natural join products natural join addresses natural join orderstatuse where user_id ="1";
+ 
+ /* delivery person registartion table*/
+ create table deliveryperson(
+ person_id int(10) auto_increment primary key,
+ person_name varchar(50),
+ person_dob date not null default '2000/01/01',
+ person_gender varchar(20) not null,
+ person_phone varchar(12) unique not null,
+ person_reg_date timestamp not null default current_timestamp
+ );
+ /*when delivery person registeres*/
+
+insert into deliveryperson(person_name,person_dob,person_gender,person_phone) values('Harish Chandra','2000/01/02','Male','8707533924');
+select person_id from deliveryperson where person_phone="8707533924";
+
+ create table addressesofperson(
+person_add_id int(10) auto_increment primary key,
+person_id int(10),
+person_pincode int(7),
+person_city varchar(30),
+person_town_village varchar(30),
+person_state varchar(30),
+foreign key(person_id) references deliveryperson(person_id)
+);
+insert into addressesofperson(person_id,person_pincode,person_city,person_town_village,person_state) values
+('1','261121','Sitapur','Hargaon','Uttar Pradesh');
+select * from addressesofperson where person_id ="1";
+select * from addressesofperson natural join deliveryperson;
+
+
+                
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
