@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="allcss.css">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <!-- <script src="allscripts.js"></script> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap');
+    </style>
+    <script type="text/javascript">
+    function focusephone(){
+    	document.getElementById("phone").focus();
+    }
+    </script>
+    <title>Company Name | Entry Page</title>
+</head>
+<body id="body" onload="focusephone();" >
+    
+<!--Login Container-->
+
+    <div class="logincont">
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: -50px;">
+            <h2 align="center" >Instant Delivery</h2>
+            <img id="fastlogo" src="https://www.logodesign.net/logo/dollar-sign-incorporated-with-shopping-cart-5404ld.png" alt="Instant delivery Logo" width="100px">
+        </div>
+        <div class="loginsection" id="loginsection">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                
+                <h3>Login to continue...</h3>
+
+
+            </div>
+<!-- login form  -->
+            <form class="form">
+             
+<!-- input for phone Number                 -->
+                <h4 id="loginerror"></h4>
+            <label for="phone" id="phonelabel">Phone Number<span style="color: red;" >*</span></label>
+            <input class="inputs" id="phone" type="number" placeholder="" required onfocus="movelabelup('phone','phonelabel');" maxlength="10" minlength="10" onblur="movedown('phone','phonelabel');">
+            
+
+<!--inpute for password-->
+
+            <label for="pass" id="passlabel">Enter password<span style="color: red;" >*</span> </label>
+            
+            <input class="inputs" type="password" name="" id="pass" placeholder="" required onfocus="movelabelup('pass','passlabel');" onblur="movedown('pass','passlabel');">
+
+<!-- show password toggle  -->
+            
+            <img id="showpass" onclick="showpassw('pass');" class="showpass" src="showpass.png "  alt="">
+
+
+
+           
+<!--forget password-->
+            
+           <a href="forgetpass.html" style="text-align: end;width: fit-content;  font-size: small;" > <p >Forgot password?</p></a>
+<!--Login Button-->     
+            <button class="buttons" type="button" style="cursor: pointer;" id="loginbtn" onclick="login(document.getElementById('phone').value,document.getElementById('pass').value);">Login</button>
+
+            <button class="newuser" 
+            onclick="newuser('signupsection','loginsection');" >New user?</button>
+        </form>
+        </div>
+
+<!-- signup section         -->
+
+        <div class="signupsection" style="display: none;" id="signupsection" >
+            
+            <div >      
+                <h3 align="center" >Signup to continue...</h3>
+                <h3 align="center" id="error2"></h3>
+                
+            </div>
+                
+
+     
+            
+<!--inpute for Phone Number-->
+    <div class="formandimage">
+        <form class="form" action="" >
+<!--Errors come here -->
+            <!--  <h3 align="center" id="error2"></h3>-->
+    
+    
+                <label  for="phone1" id="phonelabel1">Phone Number<span style="color: red;" >*</span></label>
+                <input class="inputs" id="phone1" type="text" placeholder="" name="phone" required onfocus="movelabelup('phone1','phonelabel1');" maxlength="10" minlength="10" onblur="movedown('phone1','phonelabel1');">
+                
+    <!--inpute for new registeration by otp-->
+
+                <label  id="namelabel"  for="username" >Full Name<span style="color: red;" >*</span> </label>
+    
+                <input class="inputs" type="text" name="name" id="username" required onfocus="movelabelup('username','namelabel');" onblur="movedown('username','namelabel');">
+    <!-- email input -->
+
+                <label  id="emaillabel"  for="email" >Enter Email<span style="color: red;" >*</span> </label>
+    
+            <input 
+                class="inputs" 
+                type="email" 
+                name="email" 
+                id="email" 
+                required 
+                onfocus="movelabelup('email','emaillabel');" 
+                onblur="movedown('email','emaillabel');">
+    
+    <!--inpute for password-->
+    
+            <label 
+                for="pass3" 
+                id="passlabel3">
+                Enter password
+                <span style="color: red;" >*</span>
+            </label>
+                
+            <input 
+                required
+                class="inputs" 
+                type="password" 
+                name="password" 
+                id="pass3" 
+                placeholder="" 
+                onfocus="movelabelup('pass3','passlabel3');" 
+                onblur="movedown('pass3','passlabel3');">
+                
+                <img id="showpass" onclick="showpassw('pass3');" class="showpass2" src="showpass.png"  alt="">
+    
+    <!--inpute for confirm password-->
+    
+            <label  
+                for="pass4" 
+                id="passlabel4">
+                Confirm Password
+                <span 
+                    style="color: red;">
+                *
+                </span>
+            </label>
+    
+            <input 
+                required 
+                class="inputs" 
+                type="password" 
+                name="" 
+                id="pass4" 
+                placeholder="" 
+                onfocus="movelabelup('pass4','passlabel4');" 
+                onblur="movedown('pass4','passlabel4');">
+    
+    <!--signup  Button-->     
+            <button
+                 class="buttons" 
+                 type="" 
+                 style="cursor: pointer;" 
+                 id="signupbtn" 
+                 onclick="signup(document.getElementById('phone1').value,document.getElementById('username').value,document.getElementById('email').value,document.getElementById('pass3').value,document.getElementById('pass4').value);"
+                 >
+                Signup
+            </button>
+    
+            <button 
+                class="olduser" 
+                onclick="olduser('signupsection','loginsection');
+                        event.preventDefault();"
+                >Already user?
+            </button>
+        </form>
+        <div class="image">
+            <img
+             src="https://img.freepik.com/free-vector/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security-people-entering-login-password-safety-measures_335657-1592.jpg" 
+             width="100%" 
+             alt="">
+        </div>
+        </div>       
+     </div>
+</div>
+    
+<!-- scripts -->
+
+<script>
+    function login(phone,pass){
+        if(phone.length<10){
+            document.getElementById("loginerror").innerHTML = "Phone is INVALID";
+            document.getElementById("loginerror").style.color = 'red';
+            return false;
+        }
+        if(pass.length<6){
+            event.preventDefault();
+            document.getElementById("loginerror").innerHTML = "Password is INVALID";
+            document.getElementById("loginerror").style.color = 'red';
+            return false;
+        }
+        else{
+        	
+            loginto(phone,pass);
+            return false;
+            
+        }
+        
+    }
+    function loginto(phone,pass){
+        	var xhttp = new XMLHttpRequest();
+
+            xhttp.onload = function (event) {
+            	
+            	
+            	let responsetxt = xhttp.responseText;
+            	
+            	if(responsetxt=="Wrong Details..."){
+            		document.getElementById("loginerror").innerHTML = "Wrong credentials...";
+            		
+            	}
+            	else{
+            		console.log("logged in");
+            		sessionStorage.setItem('uid',responsetxt);
+            		sessionStorage.setItem('upass',pass);
+            		
+            		window.location="index.jsp";
+            		
+            	}
+            	console.log("login responce recieved");
+                document.getElementById("loginerror").style.color = 'green';
+               return true;
+            
+                setTimeout(function(){
+                    
+             //todo 
+                   
+                    
+                },100);  
+            }
+            xhttp.open("post", "loginsvt", true);
+            xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+            xhttp.send("phone=" + phone + "&pass=" + pass);
+            
+
+    }
+/*    signup function is here */
+    function signup(phone,username,email,pass1,pass2){
+        event.preventDefault();
+    
+        if((phone.length==10 && username.length > 2) && (pass1.length>6))
+        {
+            if(pass1!=pass2){
+                document.getElementById('error2').innerHTML="Passwords not matching...";
+                 document.getElementById('error2').style.color='red';
+                return false;
+            }
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+            {
+            	 document.getElementById('error2').innerHTML="Processing...";
+                 document.getElementById('error2').style.color='green';
+                 document.getElementById('error2').innerHTML=phone+" "+ email+" "+pass1;
+
+               
+            }
+            else
+            {
+            	document.getElementById('error2').innerHTML="Fill Email id Correctly...";
+            	document.getElementById('error2').style.color='red';
+                return (false);
+        	}
+        
+            
+            document.getElementById('error2').innerHTML=phone+" "+ email+" "+pass1 + " "+username;
+            document.getElementById('error2').style.color='green';
+            
+            
+            
+            
+            
+            sendtoservlet(username,phone,email,pass1);
+            console.log("sent to servlet");
+            
+
+        }
+        else{
+            document.getElementById('error2').innerHTML="Fill all details correctly...";
+            document.getElementById('error2').style.color='red';
+            return false;
+        }
+       
+        
+        
+       
+        
+    }
+    function sendtoservlet(uname,phone,email,pass){
+    	var xhttp = new XMLHttpRequest();
+
+        xhttp.onload = function (event) {
+        	event.preventDefault();
+
+            document.getElementById("error2").innerHTML = xhttp.responseText;
+            document.getElementById("error2").style.display = "block";
+            setTimeout(function(){
+                
+            	var url= "login.html";
+                window.location = url;
+                document.getElementById("error2").style.display = "none";
+                
+            },5000);
+           
+            
+            
+            
+            
+        }
+        xhttp.open("post", "signupsvt", true);
+        xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+        xhttp.send("phone=" + phone + "&pass=" + pass + "&username=" + uname + "&email=" + email);
+    }
+   
+            function olduser(id,tg){
+                document.getElementById(tg).style.display = "flex";
+                
+                document.getElementById(id).style.display = "none";
+
+            }
+            function newuser(tg,id){
+                document.getElementById(tg).style.display = "flex";
+
+                document.getElementById(id).style.display = "none";
+
+            }
+           function display(){
+           if (document.getElementById("phone").value=="7080784497"){
+            if (document.getElementById("pass").value == "12345"){
+                location.replace("userhome.html");
+            }
+            else{
+                window.alert("Wrong Password");
+                return false;
+            }
+          
+
+           }    
+       }
+       function movelabelup(id,tg){
+            
+           document.getElementById(tg).style.transform = ("translateY(-16px)");
+           document.getElementById(tg).style.color = ("blue");
+           document.getElementById(tg).style.border=("1px solid blue");
+           document.getElementById(id).style.border = ("1.5px solid blue")
+       }
+      
+       function movedown(id,tg){
+           if(document.getElementById(id).value=="" ){
+                document.getElementById(tg).style.transform = ("translateY(0px)");
+                document.getElementById(tg).style.color = ("gray");
+                document.getElementById(id).style.border = ("1px solid red ");
+                document.getElementById(tg).style.border=("0px solid red");
+                
+            
+           }
+          else{ document.getElementById(id).style.border = ("1px solid black")
+          document.getElementById(tg).style.border=("1px solid black");
+          }
+       }
+    function showpassw(id){
+        
+        var x = document.getElementById(id);
+        if(x.type == "password")
+            x.type = "text";
+        else x.type = "password";
+
+    }
+    //    function movelabel2(){
+    //        document.getElementById("passlabel").style.transform = ("translateY(-18px)");
+    //        document.getElementById("passlabel").style.color = ("blue");
+    //        document.getElementById("passlabel").style.border = ("2px solid light ");
+    //    }
+    //    function movedown1(){
+    //        if(document.getElementById("phone").value=="" ){
+    //         document.getElementById("phonelabel").style.transform = ("translateY(0px)");
+    //        document.getElementById("phonelabel").style.color = ("black");
+    //        document.getElementById("phone").style.border = ("2px solid light ");
+            
+    //        }
+    //        else
+    //        movelabel();
+
+    //    }
+
+
+   </script> 
+</body>
+</html>

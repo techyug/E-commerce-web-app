@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Name Dynamic</title>
+    <link rel="stylesheet" href="productpagecss.css">
+    <script>
+        function updatepic(){
+            var pic =  document.getElementById("userpic");
+            
+        pic.src = document.getElementById("userpicurl").value;
+        }
+        function disable(id,btn){
+            var submitbtn = document.getElementById("submitbtn");
+           
+            btn.classList.toggle("button-style");
+            if(id.disabled==true){
+                id.disabled=false;
+                btn.innerHTML = "Save";
+               
+
+            }
+            else{
+                id.disabled=true;
+                btn.innerHTML = "Edit";
+                // btn.style.color = "red"
+                // btn.style.border  ="1px solid red";
+
+            }
+        }
+        function activate_sbtn(){
+            var submitbtn = document.getElementById("submitbtn");
+            submitbtn.disabled=false;
+            
+        }
+        
+    </script>
+</head>
+<body>
+    <header>
+        this header
+    </header> 
+    
+    <div class="account-container">
+        <div class="content">
+            <table>
+                <form action="#" method="get">
+                <tr>
+                    <td align="center" colspan="2" >
+                        <div class="image">
+                            <img id="userpic" src="https://image.shutterstock.com/image-photo/young-adult-profile-picture-red-260nw-1655747050.jpg" height="120px" alt="">
+                        </div>
+                        <input onchange="updatepic(); activate_sbtn();" type="url" placeholder="Photo URL" name="userpicurl" 
+                        value="https://image.shutterstock.com/image-photo/young-adult-profile-picture-red-260nw-1655747050.jpg"
+                        id="userpicurl" disabled required>
+                        <span>
+                            <button  id="editpic" type="button" onclick="disable(document.getElementById('userpicurl'),document.getElementById('editpic'));" >Edit</button>
+                        </span>
+                        
+                    </td>
+                   
+                    
+                </tr>
+                <tr>
+                    <td>Your Name</td>
+                    <td>
+                        <input type="text" name="name" id="username"  onchange="activate_sbtn();" disabled value="Yogendra Singh"> <span>
+                            <button id="editname" type="button" onclick="disable(document.getElementById('username'),document.getElementById('editname'));" >Edit</button>
+                        </span>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>Email address</td>
+                    <td>
+                        <input type="text" name="email" id="useremail"  onchange="activate_sbtn();" disabled value="yogendra.techyug@gmail.com" required>
+                        <span>
+                            <button id="editemail" type="button" onclick="disable(document.getElementById('useremail'),document.getElementById('editemail'));" >Edit</button>
+                        </span>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>Phone No.</td>
+                    <td>
+                        <input id="userphone" 
+                        onchange="activate_sbtn();"
+                        type="text" value="+91 8707533924" disabled required>
+                        <span>
+                            <button id="editphone" type="button" onclick="disable(document.getElementById('userphone'),document.getElementById('editphone'));" >Edit</button>
+                        </span>
+                    </td>
+                   
+                </tr>
+               
+                
+                <tr>
+                    <td align="center" colspan="3"><button
+                        class="button-87" id="submitbtn" type="submit" 
+                        
+                        disabled>Save All Changes</button>
+                        <!-- HTML !-->
+                        <button id="submitbtn" type="reset" class="button-87" role="button">Cancel</button>
+                       
+                    </td>
+                </tr>
+            </form>
+            </table>
+        </div>
+    </div>
+   
+    <!-- <main class="main-container">
+        <div class="product-and-info">
+            <div class="images-action">
+                <div class="product-image-section">
+                    <div>
+                        <ul class="image-list">
+                            <li>
+                                <img src="https://rukminim1.flixcart.com/image/128/128/khdqnbk0/computer/f/y/t/apple-original-imafxfyq6x3yhzxg.jpeg?q=70" alt="">
+                            </li>
+                            <li>
+                                <img src="https://rukminim1.flixcart.com/image/128/128/khdqnbk0/computer/f/y/t/apple-original-imafxfyq6x3yhzxg.jpeg?q=70" alt="">
+                            </li>
+                            <li>
+                                <img src="https://rukminim1.flixcart.com/image/128/128/khdqnbk0/computer/f/y/t/apple-original-imafxfyq6x3yhzxg.jpeg?q=70" alt="">
+                            </li>
+                            <li>
+                                <img src="https://rukminim1.flixcart.com/image/128/128/khdqnbk0/computer/f/y/t/apple-original-imafxfyq6x3yhzxg.jpeg?q=70" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="selected-image">
+                        <img src="https://rukminim1.flixcart.com/image/832/832/khdqnbk0/computer/f/y/t/apple-original-imafxfyqydgvrkzv.jpeg?q=70" alt="">
+                    </div>
+                </div>
+                <div class="buy-add">
+                    <button onclick="buy(1);" >BUY</button>
+                    <button style="color:black;background-color: rgb(255, 166, 0);" onclick="add_to_cart(1)" >Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <div class="product-title">
+                    <p class="ptitle">
+                        APPLE 2020 Macbook Air M1 - (8 GB/256 GB SSD/Mac OS Big Sur) MGN93HN/A  (13.3 inch, Silver, 1.29 kg)
+                    </p>
+                    <a href="#" class="rating-and-reviews">   
+                        <p class="stars">4.6 <span><img src="/star.png" alt=""></span></p>
+                        <p>800 Ratings & 10 reveiws</p>
+                    </a>
+                    <p class="price">₹92,900 <del>₹99,900</del></p>
+                </div>
+                <div class="specifications">
+                    <table class="specification">
+                        <th>General</th>
+                        <tr>
+                            <td>Sales Package</td>
+                            <td>MacBook Air, 30 W USB-C Power Adapter, USB-C Charge Cable (2m), User Guide, Warranty Documents</td>
+                        </tr>
+                        <tr>
+                            <td>Model Number</td>
+                            <td>MJXAUDBABU1</td>
+                        </tr>
+                        <tr>
+                            <td>Color</td>
+                            <td>Silver</td>
+                        </tr>
+                        <tr>
+                            <td>Power Supply</td>
+                            <td>30W AC Adapter</td>
+                        </tr>
+                        <tr>
+                            <td>Color</td>
+                            <td>Silver</td>
+                        </tr>
+                    </table>
+                    <table class="specification">
+                        <th>Features</th>
+                        <tr>
+                            <td>Sales Package</td>
+                            <td>MacBook Air, 30 W USB-C Power Adapter, USB-C Charge Cable (2m), User Guide, Warranty Documents</td>
+                        </tr>
+                        <tr>
+                            <td>Model Number</td>
+                            <td>MJXAUDBABU1</td>
+                        </tr>
+                        <tr>
+                            <td>Color</td>
+                            <td>Silver</td>
+                        </tr>
+                        <tr>
+                            <td>Power Supply</td>
+                            <td>30W AC Adapter</td>
+                        </tr>
+                        <tr>
+                            <td>Color</td>
+                            <td>Silver</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="reveiws"></div>
+
+            </div>
+        </div>
+    </main> -->
+    
+    
+</body>
+</html>
